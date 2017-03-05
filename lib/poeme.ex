@@ -10,6 +10,7 @@ defmodule Poeme do
     children = [
       # Start the endpoint when the application starts
       supervisor(Poeme.Endpoint, []),
+      supervisor(Poeme.Presence, []),
       # Start your own worker by calling: Poeme.Worker.start_link(arg1, arg2, arg3)
       # worker(Poeme.Worker, [arg1, arg2, arg3]),
     ]

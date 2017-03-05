@@ -2,7 +2,7 @@ defmodule Poeme.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", Poeme.RoomChannel
+  channel "user:*", Poeme.UserChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
