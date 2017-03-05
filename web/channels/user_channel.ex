@@ -30,24 +30,29 @@ defmodule Poeme.UserChannel do
     144,
   ])
 
+  @max_metronomes 100
+
   use Poeme.Web, :channel
 
   def join("user:metronome", _payload, socket) do
-    IO.puts("@TEMPOS")
-    IO.inspect(@tempos)
     ids = Presence.list("user:metronome")
     |> Map.keys()
     |> Enum.map(&String.to_integer/1)
-    last_id = if Enum.empty?(ids), do: -1, else: Enum.max(ids)
-    id = last_id + 1
-    tempo = @tempos |> Enum.at(rem(id, Enum.count(@tempos)))
-    socket = socket
-    |> assign(:id, id)
-    |> assign(:tempo, tempo)
 
-    send(self, :after_join)
+    if Enum.count(ids) >= @max_metronomes do
+      {:error, %{reason: "too many metronomes"}}
+    else
+      last_id = if Enum.empty?(ids), do: -1, else: Enum.max(ids)
+      id = last_id + 1
+      tempo = @tempos |> Enum.at(rem(id, Enum.count(@tempos)))
+      socket = socket
+      |> assign(:id, id)
+      |> assign(:tempo, tempo)
 
-    {:ok, socket}
+      send(self, :after_join)
+
+      {:ok, socket}
+    end
   end
 
   def handle_info(:after_join, socket) do
