@@ -6,17 +6,28 @@
 import { Socket } from 'phoenix';
 import metronome from './metronome';
 
-const socket = new Socket('/socket', {});
-let metro = null;
-socket.connect();
+export default () => {
+  const socket = new Socket('/socket', {});
+  let metro = null;
+  socket.connect();
 
-const channel = socket.channel('user:metronome', {});
-channel.on('set_tempo', ({ tempo }) => {
-  console.log("TEMPO", tempo)
-  metro = metronome(tempo);
-});
-channel.join()
-  .receive('ok', resp => { console.log('Joined successfully', resp) })
-  .receive('error', resp => { console.log('Unable to join', resp) });
+  const channel = socket.channel('user:metronome', {});
+  channel.on('set_tempo', ({ tempo }) => {
+    metro = metronome(tempo);
+  });
+  channel.on('start', () => {
+    if (metro) {
+      metro.start();
+    }
+  });
+  channel.on('stop', () => {
+    if (metro) {
+      metro.stop();
+    }
+  });
+  channel.join()
+    .receive('ok', resp => { console.log('Joined successfully', resp) })
+    .receive('error', resp => { console.log('Unable to join', resp) });
 
-export default socket;
+  return socket;
+};

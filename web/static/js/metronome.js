@@ -5,7 +5,6 @@ const minDuration = 6 * 1000;
 const maxDuration = 15 * 1000;
 
 export default (tempo) => {
-  const metroElem = document.getElementById('metronome');
   const playerElem = document.getElementById('player');
   const audio = new Audio('images/metro.mp3');
   let timer = null;
@@ -26,6 +25,9 @@ export default (tempo) => {
   };
 
   const start = () => {
+    if (timer) {
+      return;
+    }
     if (isNaN(tempo)) {
       throw new Error("No tempo!");
       return;
@@ -46,14 +48,6 @@ export default (tempo) => {
     timer.stop();
     timer = null;
     playerElem.textContent = '';
-  };
-
-  metroElem.onclick = () => {
-    if (timer) {
-      stop();
-    } else {
-      start();
-    }
   };
 
   return {

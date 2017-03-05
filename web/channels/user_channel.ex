@@ -35,7 +35,7 @@ defmodule Poeme.UserChannel do
   use Poeme.Web, :channel
 
   def join("user:metronome", _payload, socket) do
-    ids = Presence.list("user:metronome")
+    ids = Presence.list(socket)
     |> Map.keys()
     |> Enum.map(&String.to_integer/1)
 

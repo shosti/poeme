@@ -1,0 +1,12 @@
+<h1>CONTROL!</h1>
+
+<h3><%= @metronome_count %> metronomes connected</h3>
+<form method="post" action="<%= control_path @conn, :start %>">
+    <input type="hidden" name="_csrf_token" value="<%= get_csrf_token %>" />
+    <button>START!</button>
+</form>
+
+<form method="post" action="<%= control_path @conn, :stop %>">
+    <input type="hidden" name="_csrf_token" value="<%= get_csrf_token %>" />
+    <button>STOP!</button>
+</form>

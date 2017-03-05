@@ -17,10 +17,8 @@ defmodule Poeme.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/control", ControlController, :index
+    post "/control/start", ControlController, :start
+    post "/control/stop", ControlController, :stop
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", Poeme do
-  #   pipe_through :api
-  # end
 end
