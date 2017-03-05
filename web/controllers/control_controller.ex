@@ -3,6 +3,8 @@ defmodule Poeme.ControlController do
   alias Poeme.Presence
   alias Poeme.Endpoint
 
+  plug BasicAuth, use_config: {:poeme, :control_auth}
+
   def index(conn, _params) do
     metronome_count = "user:metronome" |> Presence.list() |> Enum.count()
 

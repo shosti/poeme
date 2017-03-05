@@ -26,6 +26,12 @@ config :poeme, Poeme.Endpoint,
     ]
   ]
 
+config :poeme, control_auth: [
+  username: "admin",
+  password: "sekret",
+  realm: "Poeme Controller",
+]
+
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 
