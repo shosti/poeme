@@ -1,7 +1,8 @@
 import Tock from 'tocktimer';
 
-const maxDuration = 12 * 60 * 1000;
-const minDuration = 6 * 60 * 1000;
+// TODO: MINUTES NOT SECONDS!
+const minDuration = 6 * 1000;
+const maxDuration = 15 * 1000;
 
 export default (tempo) => {
   const metroElem = document.getElementById('metronome');
@@ -14,9 +15,16 @@ export default (tempo) => {
     audio.play();
   };
 
-  const getDuration = () => (
-    minDuration + Math.floor(Math.random() * (maxDuration - minDuration))
-  );
+  const getDuration = () => {
+    // Fake "gaussian" random in [0, 1]
+    let rand = 0;
+    for (let i = 0; i < 6; i++) {
+      rand += Math.random();
+    }
+    rand = rand / 6.0;
+
+    return Math.floor(minDuration + (rand * (maxDuration - minDuration)));
+  };
 
   const start = () => {
     if (isNaN(tempo)) {
@@ -29,9 +37,8 @@ export default (tempo) => {
       callback: playBeat,
     });
     timer.start();
-    playerElem.textContent = 'PLAYING';
     const duration = getDuration();
-    console.log("DURA", duration)
+    playerElem.textContent = `${tempo} FOR ${duration}ms`;
     setTimeout(stop, duration);
   };
 
