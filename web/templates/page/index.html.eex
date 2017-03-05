@@ -1,4 +1,3 @@
-<input type="number" id="tempo"></div>
 <div id="metronome">
     <h1>PLAY!</h1>
     <div id="player"></div>

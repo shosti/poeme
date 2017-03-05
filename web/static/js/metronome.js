@@ -7,7 +7,6 @@ const maxDuration = 15 * 1000;
 export default (tempo) => {
   const metroElem = document.getElementById('metronome');
   const playerElem = document.getElementById('player');
-  const tempoElem = document.getElementById('tempo');
   const audio = new Audio('images/metro.mp3');
   let timer = null;
 
