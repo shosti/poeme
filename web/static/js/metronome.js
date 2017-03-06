@@ -6,7 +6,7 @@ const maxDuration = 15 * 1000;
 
 export default (tempo) => {
   const playerElem = document.getElementById('player');
-  const audio = new Audio('images/metro.mp3');
+  const audio = document.getElementById('metro-audio');
   let timer = null;
 
   const playBeat = () => {
@@ -44,6 +44,9 @@ export default (tempo) => {
   };
 
   const stop = () => {
+    if (!timer) {
+      return;
+    }
     console.log('STOPPING');
     timer.stop();
     timer = null;
