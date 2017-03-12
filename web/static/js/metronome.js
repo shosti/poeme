@@ -29,8 +29,8 @@ export default () => {
 
   const testSound = () => {
     tempo = 50;
-    start();
-    // playBeat();
+    audio.addEventListener('ended', playBeat);
+    playBeat();
     // readyButton.className = 'shown-button';
   }
 
