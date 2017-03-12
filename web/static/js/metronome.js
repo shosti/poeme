@@ -14,14 +14,7 @@ export default (tempo) => {
   };
 
   const getDuration = () => {
-    // Fake "gaussian" random in [0, 1]
-    let rand = 0;
-    for (let i = 0; i < 6; i++) {
-      rand += Math.random();
-    }
-    rand = rand / 6.0;
-
-    return Math.floor(minDuration + (rand * (maxDuration - minDuration)));
+    return Math.floor(minDuration + (Math.random() * (maxDuration - minDuration)));
   };
 
   const start = () => {
