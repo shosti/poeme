@@ -1,1 +1,31 @@
-/* This file is for your main application css. */
+#metronome {
+    position: absolute;
+    top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.not-ready {
+    background-color: #8B0000;
+}
+
+.ready {
+    background-color: green;
+}
+
+.pending {
+    background-color: #F8DE7E;
+}
+
+.playing {
+    background-color: black;
+}
+
+.hidden {
+    display: none;
+}
+
+.shown-button {
+}

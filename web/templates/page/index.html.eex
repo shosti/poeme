@@ -1,6 +1,6 @@
-<div id="metronome">
-    <h1>PLAY!</h1>
-    <div id="player"></div>
+<div id="metronome" class="not-ready">
+    <button id="testbutton" class="hidden">Click to test sound</button>
+    <button id="readybutton" class="hidden">Click here when ready</button>
 </div>
 
 <audio id="metro-audio">
