@@ -1,3 +1,5 @@
+const AudioContext = typeof window.AudioContext === 'undefined' ? webkitAudioContext : window.AudioContext;
+
 export default () => {
   const ctx = new AudioContext();
   let audioData;
