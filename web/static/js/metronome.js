@@ -1,5 +1,6 @@
 import Tock from 'tocktimer';
 import socket from './socket';
+import audio from './audio';
 
 // TODO: MINUTES NOT SECONDS!
 const minDuration = 6 * 1000;
@@ -7,7 +8,7 @@ const maxDuration = 15 * 1000;
 
 export default () => {
   const playerElem = document.getElementById('metronome');
-  const audio = document.getElementById('metro-audio');
+  const player = audio();
   const testButton = document.getElementById('testbutton');
   const readyButton = document.getElementById('readybutton');
   const sock = socket();
@@ -17,7 +18,7 @@ export default () => {
   let tempo = null;
 
   const playBeat = () => {
-    audio.play();
+    player.play();
   };
 
   const pending = () => {
@@ -28,10 +29,8 @@ export default () => {
   };
 
   const testSound = () => {
-    tempo = 50;
-    audio.addEventListener('ended', playBeat);
     playBeat();
-    // readyButton.className = 'shown-button';
+    readyButton.className = 'shown-button';
   }
 
   const ready = () => {
@@ -39,7 +38,6 @@ export default () => {
     readyButton.className = 'hidden';
     sock.getTempo().then(t => {
       tempo = t;
-      console.log("TEMPO", tempo);
       playerElem.className = 'ready';
     });
   };
