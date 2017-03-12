@@ -28,8 +28,10 @@ export default () => {
   };
 
   const testSound = () => {
-    playBeat();
-    readyButton.className = 'shown-button';
+    tempo = 50;
+    start();
+    // playBeat();
+    // readyButton.className = 'shown-button';
   }
 
   const ready = () => {
