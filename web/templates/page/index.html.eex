@@ -2,8 +2,3 @@
     <button id="testbutton" class="hidden">Click to test sound</button>
     <button id="readybutton" class="hidden">Click here when ready</button>
 </div>
-
-<audio id="metro-audio">
-    <source src="images/metro.m4a" type="audio/mpeg" />
-    <source src="images/metro.mp3" type="audio/mpeg" />
-</audio>
