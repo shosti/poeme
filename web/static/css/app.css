@@ -31,3 +31,19 @@
 
 .shown-button {
 }
+
+button {
+  display: inline-block;
+  margin: 0 10px 0 0;
+  padding: 15px 45px;
+  font-size: 30px;
+  font-family: sans-serif;
+  line-height: 1.8;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 15px;
+  color: #fff;
+  background-color: orange;
+  text-shadow: -1px 1px #417cb8;
+  border: none;
+}

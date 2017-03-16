@@ -1,4 +1,4 @@
 <div id="metronome" class="not-ready">
-    <button id="testbutton" class="hidden">Click to test sound</button>
-    <button id="readybutton" class="hidden">Click here when ready</button>
+    <button id="testbutton" class="hidden">Click to test</button>
+    <button id="readybutton" class="hidden">Click when ready</button>
 </div>
