@@ -43,8 +43,8 @@ defmodule Poeme.UserChannel do
     |> Map.keys()
     |> Enum.map(&String.to_integer/1)
 
-    if Enum.count(ids) > @max_metronomes do
-      {:error, %{reason: "too many metronomes"}}
+    if Enum.count(ids) >= @max_metronomes do
+      {:reply, {:error, %{reason: "too many metronomes"}}, socket}
     else
       last_id = if Enum.empty?(ids), do: -1, else: Enum.max(ids)
       id = last_id + 1

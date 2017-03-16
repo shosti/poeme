@@ -39,11 +39,18 @@ export default () => {
     sock.getTempo().then(t => {
       tempo = t;
       playerElem.className = 'ready';
+    }, reason => {
+      error(reason);
     });
   };
 
   const getDuration = () => {
     return Math.floor(minDuration + (Math.random() * (maxDuration - minDuration)));
+  };
+
+  const error = (reason) => {
+    console.log('Error: ', reason);
+    playerElem.className = 'not-ready';
   };
 
   const start = () => {
