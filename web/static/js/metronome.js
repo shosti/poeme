@@ -2,9 +2,8 @@ import Tock from 'tocktimer';
 import socket from './socket';
 import audio from './audio';
 
-// TODO: MINUTES NOT SECONDS!
-const minDuration = 6 * 1000;
-const maxDuration = 15 * 1000;
+const minDuration = 6 * 60 * 1000;
+const maxDuration = 15 * 60 * 1000;
 
 export default () => {
   const playerElem = document.getElementById('metronome');
@@ -44,8 +43,19 @@ export default () => {
     });
   };
 
+  const gaussianRand = () => {
+    const n = 6;
+    let rand = 0;
+
+    for (let i = 0; i < n; i++) {
+      rand += Math.random();
+    }
+
+    return rand / n;
+  }
+
   const getDuration = () => {
-    return Math.floor(minDuration + (Math.random() * (maxDuration - minDuration)));
+    return Math.floor(minDuration + (gaussianRand() * (maxDuration - minDuration)));
   };
 
   const error = (reason) => {
