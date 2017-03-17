@@ -20,5 +20,6 @@ defmodule Poeme.Router do
     get "/control", ControlController, :index
     post "/control/start", ControlController, :start
     post "/control/stop", ControlController, :stop
+    get "/.well-known/acme-challenge/:id", PageController, :letsencrypt
   end
 end
