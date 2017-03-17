@@ -15,10 +15,10 @@ export default () => {
       throw new Error('Audio data not downloaded');
     }
     const src = ctx.createBufferSource();
-    return ctx.decodeAudioData(audioData).then(buf => {
+    return ctx.decodeAudioData(audioData, (buf) => {
       src.buffer = buf;
       src.connect(ctx.destination);
-      src.start();
+      src.start(0);
     });
   };
 
