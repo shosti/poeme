@@ -2,8 +2,8 @@ import Tock from 'tocktimer';
 import socket from './socket';
 import audio from './audio';
 
-const minDuration = 6 * 60 * 1000;
-const maxDuration = 15 * 60 * 1000;
+const minDuration = 4 * 60 * 1000;
+const maxDuration = 8 * 60 * 1000;
 
 export default () => {
   const playerElem = document.getElementById('metronome');
